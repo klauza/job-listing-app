@@ -8,20 +8,27 @@ async function fetchGithub(){
   const allJobs = []; // holds results getting back from API
 
   while(resultCount > 0){
-    const res = await fetch(`${baseUrl}?page=${onPage}`);
-    const jobs = await res.json();
-    allJobs.push(...jobs);
-
-    resultCount = jobs.length;  // if 0, break the loop
-    
-    console.log('got', resultCount, 'jobs');
-    onPage++;
+    try{
+      const res = await fetch(`${baseUrl}?page=${onPage}`);
+      const jobs = await res.json();
+      allJobs.push(...jobs);
+  
+      resultCount = jobs.length;  // if 0, break the loop
+      
+      console.log('got', resultCount, 'jobs');
+      onPage++;
+    } catch(err) {
+      console.log('error: ', err);
+    };
   }
 
   console.log('got', allJobs.length, 'jobs');
   
 }
 
-fetchGithub();
+
+  fetchGithub();
+
+
 
 module.exports = fetchGithub;

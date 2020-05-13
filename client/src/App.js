@@ -1,24 +1,25 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import Jobs from './Jobs';
 
 function App() {
+
+  // API
+  const mockJobs = [
+    {
+      title: 'SWE 1', company: 'Google'
+    },
+    {
+      title: 'SWE 2', company: 'Apple'
+    },
+    {
+      title: 'SWE 3', company: 'Facebook'
+    }
+  ]
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Jobs jobs={mockJobs} />
     </div>
   );
 }

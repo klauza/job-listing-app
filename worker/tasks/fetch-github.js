@@ -4,8 +4,8 @@ const redis = require("redis");
 const client = redis.createClient();
 
 const { promisify } = require("util");
-const getAsync = promisify(client.get).bind(client);  // it ocnverts client.get function to the promise
-const setAsync = promisify(client.get).bind(client);
+// const getAsync = promisify(client.get).bind(client);  // it ocnverts client.get function to the promise
+const setAsync = promisify(client.set).bind(client);
 
 const baseUrl = `https://jobs.github.com/positions.json`;
 
@@ -14,6 +14,7 @@ async function fetchGithub(){
   let resultCount = 1, onPage = 0;  // starting variables for loop
   const allJobs = []; // holds results getting back from API
 
+  // fetch all pages
   while(resultCount > 0){
     try{
       const res = await fetch(`${baseUrl}?page=${onPage}`);
@@ -29,8 +30,13 @@ async function fetchGithub(){
     };
   }
 
+  // filter algorithm
+
+  // set in redis
   console.log('got', allJobs.length, 'jobs');
-  
+  const success = await setAsync('github', JSON.stringify(allJobs));
+  console.log({success});
+
 }
 
 

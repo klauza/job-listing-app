@@ -19,10 +19,12 @@ const mockJobs = [
 ]
 
 // fetch jobs from api
-async function fetchJobs(){
+async function fetchJobs(updateCb){
   // browser version of fetch, its built-into the browser
   const res = await fetch(JOB_API_URL);
   const json = await res.json();
+
+  updateCb(json); // updateJobs from useState
 
   console.log({json});
 }
@@ -36,7 +38,7 @@ function App() {
   // some function calls
   // laso has second argument which is for hooks we want to watch for update, if its empty, fires once (like componentdidmount)
   React.useEffect(()=>{
-    fetchJobs();
+    fetchJobs(updateJobs);
   }, [])
   
   return (

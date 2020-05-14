@@ -4,7 +4,6 @@ const redis = require("redis");
 const client = redis.createClient();
 
 const { promisify } = require("util");
-// const getAsync = promisify(client.get).bind(client);  // it ocnverts client.get function to the promise
 const setAsync = promisify(client.set).bind(client);
 
 const baseUrl = `https://jobs.github.com/positions.json`;

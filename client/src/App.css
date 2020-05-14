@@ -44,10 +44,22 @@
 }
 .job{
   width: 100%;
-  margin: 10px 0;
-  padding: 10px 0;
+  margin: 15px 0;
+  padding: 15px 5px;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
   box-shadow: 0 0 2px 0 rgba(0,0,0,.5);
+  text-align: left;
+}
+
+.job:hover{
+  cursor: pointer;
+  color: #666666;
+}
+
+.detail-logo{
+  height: 30px;
+  float: right;
 }

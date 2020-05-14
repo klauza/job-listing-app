@@ -1,22 +1,21 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import Jobs from './Jobs';
 
 const JOB_API_URL = "http://localhost:3001/jobs";
 
 // API
-const mockJobs = [
-  {
-    title: 'SWE 1', company: 'Google'
-  },
-  {
-    title: 'SWE 2', company: 'Apple'
-  },
-  {
-    title: 'SWE 3', company: 'Facebook'
-  }
-]
+// const mockJobs = [
+//   {
+//     title: 'SWE 1', company: 'Google'
+//   },
+//   {
+//     title: 'SWE 2', company: 'Apple'
+//   },
+//   {
+//     title: 'SWE 3', company: 'Facebook'
+//   }
+// ]
 
 // fetch jobs from api
 async function fetchJobs(updateCb){

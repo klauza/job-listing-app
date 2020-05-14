@@ -30,11 +30,30 @@ async function fetchGithub(){
     };
   }
 
+  console.log('got', allJobs.length, 'jobs');
+
   // filter algorithm
+  const jrJobs = allJobs.filter(job => {
+    const jobTitle = job.title.toLowerCase();
+    let isJunior = true;
+
+    // algorithm logic
+    if(jobTitle.includes('senior') || 
+      jobTitle.includes('manager') ||
+      jobTitle.includes('sr.') ||
+      jobTitle.includes('architect')
+    ){
+      return false;
+    }
+
+    return true;
+  })
+
+  console.log('filtered down to: ', jrJobs.length)
 
   // set in redis
-  console.log('got', allJobs.length, 'jobs');
-  const success = await setAsync('github', JSON.stringify(allJobs));
+  const success = await setAsync('github', JSON.stringify(jrJobs));
+  
   console.log({success});
 
 }

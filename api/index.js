@@ -10,7 +10,7 @@ const { promisify } = require("util");
 const getAsync = promisify(client.get).bind(client);
 
 
-app.get('/jobs', async (req, res) => {  // this route is converted to be async func
+app.get('/api/jobs', async (req, res) => {  // this route is converted to be async func
   const jobs = await getAsync('github');
   // console.log(JSON.parse(jobs).length);
   res.header('Access-Control-Allow-Origin', "http://localhost:3000")

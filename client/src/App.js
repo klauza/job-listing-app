@@ -41,9 +41,9 @@ function App() {
   }, [])
   
   return (
-    <div className="App">
-      <Jobs jobs={jobList} />
-    </div>
+      <div className="App">
+        <Jobs jobs={jobList} />
+      </div>
   );
 }
 
